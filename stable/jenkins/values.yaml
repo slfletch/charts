@@ -6,7 +6,7 @@
 Master:
   Name: jenkins-master
   Image: "jenkinsci/jenkins"
-  ImageTag: "2.46.1"
+  ImageTag: "2.46.2"
   ImagePullPolicy: "Always"
   Component: "jenkins-master"
   UseSecurity: true
@@ -16,15 +16,15 @@ Master:
   Memory: "256Mi"
 # Set min/max heap here if needed with:
 # JavaOpts: "-Xms512m -Xmx512m"
-  ServicePort: 8080
+  ServicePort: 9390 
 # For minikube, set this to NodePort, elsewhere use LoadBalancer
 # Use ClusterIP if your setup includes ingress controller
   ServiceType: LoadBalancer
 # Used to create Ingress record (should used with ServiceType: ClusterIP)
 # HostName: jenkins.cluster.local
 # NodePort: <to set explicitly, choose port between 30000-32767
-  ContainerPort: 8080
-  SlaveListenerPort: 50000
+  ContainerPort: 9390 
+  SlaveListenerPort: 50002
   LoadBalancerSourceRanges:
   - 0.0.0.0/0
 # List of plugins to be install during Jenkins master start
@@ -77,6 +77,6 @@ Persistence:
 #  - name: nothing
 #    emptyDir: {}
   mounts:
-#  - mountPath: /var/nothing
-#    name: nothing
-#    readOnly: true
+  - mountPath: /var/jenkins_home
+    name: jenkins_mnt
+    readOnly: false

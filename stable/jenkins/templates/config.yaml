@@ -66,7 +66,7 @@ data:
           <skipTlsVerify>false</skipTlsVerify>
           <namespace>{{ .Release.Namespace }}</namespace>
           <jenkinsUrl>http://{{ template "fullname" . }}:{{.Values.Master.ServicePort}}</jenkinsUrl>
-          <jenkinsTunnel>{{ template "fullname" . }}:50000</jenkinsTunnel>
+          <jenkinsTunnel>{{ template "fullname" . }}:50002</jenkinsTunnel>
           <containerCap>10</containerCap>
           <retentionTimeout>5</retentionTimeout>
           <connectTimeout>0</connectTimeout>
@@ -85,7 +85,7 @@ data:
         </hudson.model.AllView>
       </views>
       <primaryView>All</primaryView>
-      <slaveAgentPort>50000</slaveAgentPort>
+      <slaveAgentPort>50002</slaveAgentPort>
       <label></label>
       <nodeProperties/>
       <globalNodeProperties/>
